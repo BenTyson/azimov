@@ -10,32 +10,50 @@
 
 ## Current State
 
-### Phase: Foundation
+### Phase: MVP Complete
 - [x] Vision defined
 - [x] Architecture designed
 - [x] Next.js project initialized
 - [x] TailwindCSS configured
 - [x] shadcn/ui set up
-- [ ] Landing page complete
-- [ ] Journal feature complete
-- [ ] Documentation complete
+- [x] Landing page complete
+- [x] Journal feature complete (local storage)
+- [x] Documentation complete
+- [x] Initial commit made
+
+### What's Working
+1. **Landing Page** (`/`) - Communicates the vision, links to journal
+2. **Journal List** (`/journal`) - View, search, delete entries
+3. **New Entry** (`/journal/new`) - Create entries with assumptions/uncertainties
+4. **Edit Entry** (`/journal/[id]`) - Edit with version history
+5. **Explore Placeholder** (`/explore`) - Coming soon page
 
 ### Tech Stack
 - Next.js 14 (App Router)
 - TypeScript
 - TailwindCSS + shadcn/ui
-- Prisma (not yet initialized)
+- Local Storage (browser-based, no backend)
 
 ### Repository Structure
 ```
 /azimov
-├── /docs           # You are here
+├── /docs               # Documentation
+│   ├── VISION.md      # Philosophy
+│   ├── ARCHITECTURE.md # Technical decisions
+│   ├── SESSION_CONTEXT.md # You are here
+│   └── /guides        # Setup guides
 ├── /src
-│   ├── /app        # Next.js pages
-│   ├── /components # React components
-│   └── /lib        # Utilities
-├── /prisma         # Database schema (pending)
-└── /public         # Static assets
+│   ├── /app           # Next.js pages
+│   │   ├── page.tsx   # Landing
+│   │   ├── /journal   # Journal feature
+│   │   └── /explore   # Topic exploration (placeholder)
+│   ├── /components    # React components
+│   │   └── /ui        # shadcn components
+│   ├── /hooks         # useJournal hook
+│   └── /lib
+│       ├── /storage   # localStorage utilities
+│       └── utils.ts   # General utilities
+└── /public            # Static assets
 ```
 
 ## Key Design Decisions
@@ -45,16 +63,12 @@
 3. **Privacy-first** - Thoughts never leave device without explicit consent
 4. **AI optional** - Core features work without AI integration
 
-## Active Work
+## Next Steps (Future Work)
 
-Current focus: Building MVP with:
-1. Landing page that communicates the vision
-2. Personal Thinking Journal (local storage)
-3. Basic topic exploration UI
-
-## Open Questions
-
-- None currently - proceeding with initial implementation
+1. **Topic Exploration System** - Curated topics with steelmanned perspectives
+2. **AI Socratic Questioning** - Optional Claude API integration
+3. **User Authentication** - For optional cloud sync
+4. **Export/Import** - Backup and restore journal data
 
 ## Files to Know
 
@@ -63,14 +77,18 @@ Current focus: Building MVP with:
 | `/docs/VISION.md` | Philosophy and principles |
 | `/docs/ARCHITECTURE.md` | Technical decisions |
 | `/src/app/page.tsx` | Landing page |
-| `/src/app/journal/page.tsx` | Journal feature (pending) |
+| `/src/app/journal/page.tsx` | Journal list |
+| `/src/app/journal/new/page.tsx` | New entry page |
+| `/src/app/journal/[id]/page.tsx` | Edit entry page |
+| `/src/lib/storage/journal.ts` | LocalStorage API |
+| `/src/hooks/useJournal.ts` | React hooks |
 
 ## How to Continue
 
 1. Read this document and `/docs/VISION.md`
 2. Check `/docs/ARCHITECTURE.md` for technical decisions
-3. Review current `/src/app/page.tsx` for UI patterns
-4. Continue from the current phase checklist above
+3. Run `npm run dev` to start the development server
+4. Test the journal feature at `http://localhost:3000/journal`
 
 ## Commands
 
@@ -83,3 +101,4 @@ npm run lint    # Run ESLint
 ---
 
 *Update this document when making significant changes to project state.*
+*Last updated: December 2024 - MVP Complete*

@@ -1,29 +1,12 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { Nav } from "@/components/nav";
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-background">
-      {/* Navigation */}
-      <nav className="border-b border-border/40 backdrop-blur-sm fixed top-0 w-full z-50 bg-background/80">
-        <div className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
-          <Link href="/" className="font-semibold text-xl tracking-tight">
-            Clarify
-          </Link>
-          <div className="flex items-center gap-4">
-            <Link
-              href="/explore"
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-            >
-              Explore
-            </Link>
-            <Link href="/journal">
-              <Button size="sm">Start Thinking</Button>
-            </Link>
-          </div>
-        </div>
-      </nav>
+      <Nav />
 
       {/* Hero Section */}
       <section className="pt-32 pb-20 px-6">

@@ -8,6 +8,8 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useJournal } from "@/hooks/useJournal";
+import { ThemeToggle } from "@/components/theme-toggle";
+import { SocraticQuestions } from "@/components/features/journal/socratic-questions";
 
 // Structured prompts to help surface deeper thinking
 const THINKING_PROMPTS = [
@@ -87,6 +89,7 @@ export default function NewJournalEntry() {
             Clarify
           </Link>
           <div className="flex items-center gap-4">
+            <ThemeToggle />
             <Link href="/journal">
               <Button variant="ghost" size="sm">
                 Cancel
@@ -237,6 +240,13 @@ export default function NewJournalEntry() {
                 </div>
               </CardContent>
             </Card>
+
+            {/* Socratic Questioning */}
+            <SocraticQuestions
+              content={content}
+              assumptions={assumptions}
+              uncertainties={uncertainties}
+            />
           </div>
 
           {/* Save Button (mobile) */}
